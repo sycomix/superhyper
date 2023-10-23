@@ -179,10 +179,7 @@ async def handle_stop(writer, data):
                 del DATA[vm_name]
             return
 
-        actions = {}
-        actions['stop'] = vm.terminate
-        actions['kill'] = vm.kill
-
+        actions = {'stop': vm.terminate, 'kill': vm.kill}
         write_string(writer, f'Attempting to {action} VM {vm_name}')
 
         actions[action]()
